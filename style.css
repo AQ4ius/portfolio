@@ -1,0 +1,258 @@
+/* Global Style */
+body {
+  font-family: 'Times New Roman', Times, serif;
+  margin: 0;
+  padding: 0;
+  background: linear-gradient(#2a004d, #0c0c0c, #0c0c0c, #2a004d);
+  text-align: center;
+  color: #ffffff;
+}
+
+html {
+  scroll-behavior: smooth;
+}
+
+/* Header */
+header {
+  color: #fff;
+  padding: 20px 10px;
+}
+
+.newline {
+  display: block;
+  background: linear-gradient(90deg, #b700ff, #000291);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+  font-weight: bold;
+  font-size: 6rem;
+}
+
+.newsubline {
+  display: block;
+  background: linear-gradient(90deg, #ffffff, #ffffff);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+  font-weight: bold;
+  font-size: 2rem;
+}
+
+/* Navbar */
+nav {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  background: rgba(0, 0, 0, 0.6);
+  backdrop-filter: blur(6px);
+  padding: 15px 0;
+  z-index: 1000;
+}
+
+nav ul {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+  display: flex;
+  justify-content: center;
+  gap: 30px;
+}
+
+nav ul li a {
+  text-decoration: none;
+  color: white;
+  font-size: 20px;
+  font-weight: bold;
+  transition: color 0.3s, transform 0.3s;
+}
+
+nav ul li a:hover {
+  color: #00bfff;
+  transform: scale(1.1);
+}
+
+/* Sections */
+section {
+  min-height: 100vh;
+  padding-top: 60px; /* prevents hiding under navbar */
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  font-size: 50px;
+  color: white;
+  text-align: center;
+}
+
+/* Section Titles */
+h2 {
+  margin-top: 10px;
+  color: #fff;
+}
+
+/* Gallery */
+.gallery {
+  margin-top: 30px;
+}
+
+.gallery .images {
+  display: flex;
+  justify-content: center;
+  gap: 30px;
+  flex-wrap: wrap;
+  margin-top: 15px;
+}
+
+.gallery .images img {
+  width: 500px;
+  height: auto;
+  cursor: pointer;
+  transition: transform 0.3s ease;
+  border-radius: 10px;
+}
+
+.gallery .images img:hover {
+  transform: scale(1.1);
+}
+
+/* Make only the profile image smaller and circular */
+.profile-img {
+  width: 200px;      /* adjust size */
+  height: 200px;     /* keep it square */
+  border-radius: 50%; /* makes it a circle */
+  object-fit: cover;  /* ensures it doesn't look squished */
+}
+
+/* Lightbox */
+.lightbox {
+  display: none;
+  position: fixed;
+  z-index: 1000;
+  left: 0;
+  top: 0;
+  width: 100%;
+  height: 100%;
+  background: rgba(0, 0, 0, 0.9);
+  justify-content: center;
+  align-items: center;
+  animation: fadeIn 0.3s ease;
+}
+
+.lightbox img {
+  max-width: 90%;
+  max-height: 80%;
+  border-radius: 10px;
+  transform: scale(0.8);
+  opacity: 0;
+  animation: zoomIn 0.3s forwards;
+}
+
+.lightbox .close {
+  position: absolute;
+  top: 20px;
+  right: 40px;
+  font-size: 40px;
+  color: white;
+  cursor: pointer;
+}
+
+/* Animations */
+@keyframes fadeIn {
+  from { background: rgba(0, 0, 0, 0); }
+  to { background: rgba(0, 0, 0, 0.9); }
+}
+
+@keyframes zoomIn {
+  from { transform: scale(0.8); opacity: 0; }
+  to { transform: scale(1); opacity: 1; }
+}
+
+@keyframes zoomOut {
+  from { transform: scale(1); opacity: 1; }
+  to { transform: scale(0.8); opacity: 0; }
+}
+
+/* 🎥 Video Grid */
+.videos {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); 
+  gap: 20px; /* equal spacing between rows & columns */
+  justify-items: center;
+  padding: 20px;
+}
+
+/* 🎥 Streamable Video Grid */
+.video-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
+  gap: 20px; /* equal spacing between videos */
+  justify-items: center;
+  padding: 20px;
+}
+
+.video-container {
+  position: relative;
+  width: 100%;
+  max-width: 500px;
+  padding-bottom: 56.25%; /* 16:9 aspect ratio */
+  height: 0;
+  overflow: hidden;
+  border-radius: 12px;
+  box-shadow: 0 4px 15px rgba(0,0,0,0.3);
+  transition: transform 0.3s ease;
+}
+
+.video-container:hover {
+  transform: scale(1.05);
+}
+
+.video-container iframe {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  border: none;
+  border-radius: 12px;
+}
+
+/* Footer */
+footer {
+  background: #161616;
+  color: white;
+  padding: 10px;
+  margin-top: 30px;
+}
+
+/* ========================= */
+/* 📱 Responsive Adjustments */
+/* ========================= */
+@media (min-width: 1200px) {
+  .videos video {
+    max-width: 600px; /* larger videos on desktop */
+  }
+}
+
+@media (max-width: 1024px) {
+  .newline { font-size: 4rem; }
+  nav ul li a { font-size: 18px; }
+  .gallery .images img { width: 300px; }
+}
+
+@media (max-width: 768px) {
+  .newline { font-size: 3rem; }
+  nav ul { flex-direction: column; gap: 15px; }
+  section { font-size: 30px; padding: 20px; }
+  .gallery .images { flex-direction: column; align-items: center; }
+  .gallery .images img { width: 90%; margin-bottom: 20px; }
+  .videos { grid-template-columns: 1fr; } /* single column */
+  .videos video { width: 95%; }
+}
+
+@media (max-width: 480px) {
+  .newline { font-size: 2rem; }
+  nav ul li a { font-size: 16px; }
+  h2 { font-size: 1.5rem; }
+  section { font-size: 20px; }
+}
