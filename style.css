@@ -1,4 +1,4 @@
-/* Global Style */
+/*Style*/
 body {
   font-family: 'Times New Roman', Times, serif;
   margin: 0;
@@ -12,7 +12,7 @@ html {
   scroll-behavior: smooth;
 }
 
-/* Header */
+/* Header & Titles */
 header {
   color: #fff;
   padding: 20px 10px;
@@ -85,7 +85,6 @@ section {
   text-align: center;
 }
 
-/* Section Titles */
 h2 {
   margin-top: 10px;
   color: #fff;
@@ -116,12 +115,12 @@ h2 {
   transform: scale(1.1);
 }
 
-/* Make only the profile image smaller and circular */
+/* Profile Image */
 .profile-img {
-  width: 200px;      /* adjust size */
-  height: 200px;     /* keep it square */
-  border-radius: 50%; /* makes it a circle */
-  object-fit: cover;  /* ensures it doesn't look squished */
+  width: 200px;
+  height: 200px;
+  border-radius: 50%;
+  object-fit: cover;
 }
 
 /* Lightbox */
@@ -157,6 +156,7 @@ h2 {
   cursor: pointer;
 }
 
+
 /* Animations */
 @keyframes fadeIn {
   from { background: rgba(0, 0, 0, 0); }
@@ -173,20 +173,11 @@ h2 {
   to { transform: scale(0.8); opacity: 0; }
 }
 
-/* 🎥 Video Grid */
-.videos {
+/* Video Grid (VFX / Scripts) */
+.videos, .video-grid {
   display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); 
-  gap: 20px; /* equal spacing between rows & columns */
-  justify-items: center;
-  padding: 20px;
-}
-
-/* 🎥 Streamable Video Grid */
-.video-grid {
-  display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
-  gap: 20px; /* equal spacing between videos */
+  grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+  gap: 20px;
   justify-items: center;
   padding: 20px;
 }
@@ -200,11 +191,12 @@ h2 {
   overflow: hidden;
   border-radius: 12px;
   box-shadow: 0 4px 15px rgba(0,0,0,0.3);
-  transition: transform 0.3s ease;
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
 }
 
 .video-container:hover {
   transform: scale(1.05);
+  box-shadow: 0 8px 20px rgba(0,0,0,0.3);
 }
 
 .video-container iframe {
@@ -225,13 +217,8 @@ footer {
   margin-top: 30px;
 }
 
-/* ========================= */
-/* 📱 Responsive Adjustments */
-/* ========================= */
-@media (min-width: 1200px) {
-  .videos video {
-    max-width: 600px; /* larger videos on desktop */
-  }
+@media (max-width: 1200px) {
+  .gallery .images img { width: 400px; }
 }
 
 @media (max-width: 1024px) {
@@ -246,8 +233,7 @@ footer {
   section { font-size: 30px; padding: 20px; }
   .gallery .images { flex-direction: column; align-items: center; }
   .gallery .images img { width: 90%; margin-bottom: 20px; }
-  .videos { grid-template-columns: 1fr; } /* single column */
-  .videos video { width: 95%; }
+  .video-grid { grid-template-columns: 1fr; }
 }
 
 @media (max-width: 480px) {
@@ -256,3 +242,8 @@ footer {
   h2 { font-size: 1.5rem; }
   section { font-size: 20px; }
 }
+
+@media (max-width: 360px) {
+  .video-grid { grid-template-columns: 1fr; }
+}
+
