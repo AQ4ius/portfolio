@@ -188,23 +188,38 @@ h2 {
   box-shadow: 0 4px 10px rgba(0,0,0,0.3);
 }
 
+/* Make GIF grid responsive */
 .gif-grid {
   display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+  grid-template-columns: repeat(auto-fit, minmax(350px, 1fr)); /* responsive columns */
   gap: 20px;
-  max-width: 900px;
-  margin: 20px auto;
+  margin-top: 30px;
 }
 
+/* Container for gifs */
+.gif-container {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  overflow: hidden;
+  border-radius: 12px;
+  box-shadow: 0 4px 5px rgba(0, 0, 0, 0.3);
+  background: radial-gradient(#b700ff,#000291,#8c00c4); /* makes them stand out */
+  padding: 10px;
+}
+
+/* Make gifs resize to container */
 .gif-container img {
   width: 100%;
   height: auto;
-  max-width: 500px;
-  border-radius: 10px;
+  max-height: 500px; /* optional: prevents oversized gifs */
+  object-fit: contain;
   cursor: pointer;
-  transition: transform 0.2s ease;
+  border-radius: 10px;
+  transition: transform 0.2s ease-in-out;
 }
 
+/* Hover effect */
 .gif-container img:hover {
   transform: scale(1.05);
 }
